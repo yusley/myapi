@@ -1,15 +1,9 @@
 import express from 'express'
-import { Router, Request, Response } from 'express';
+import route from './routes';
 
 const app = express();
 
-const route = Router();
-
 app.use(express.json());
-
-route.get('/', (req: Request,res:Response) => {
-    res.send({message:'Hello World with ts'})
-})
 
 app.use(route)
 
