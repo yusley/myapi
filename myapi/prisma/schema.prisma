@@ -21,3 +21,12 @@ model User {
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 }
+
+model TransactionsMoney {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  price String
+  category String
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+}
