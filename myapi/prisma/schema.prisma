@@ -23,11 +23,23 @@ model User {
   updated_at DateTime? @default(now())
 }
 
+model Category {
+  id String @id @default(uuid())
+  title String
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  TransactionsMoney TransactionsMoney[]
+}
+
 model TransactionsMoney {
   id String @id @default(uuid())
   title String
   price String
-  category String
+  categoryId String
+  category Category @relation(fields: [categoryId], references: [id])
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
 }
+
+

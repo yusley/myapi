@@ -1,0 +1,10 @@
+import { z } from 'zod'
+import { CategorySchema } from '../../category/validCategorySchema/SchemaCategory'
+
+export const TransactionsSchema = z.object({
+    title : z.string(),
+    price : z.string(),
+    categoryId: z.string(),
+    created_at : z.date().optional(),
+    updated_at : z.date().optional()
+})

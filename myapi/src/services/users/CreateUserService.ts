@@ -1,11 +1,11 @@
 import prismaClient from "../../prisma";
-import { UserInterface } from "../../interfaces/UserInterface";
+import { z } from 'zod'
 import { Conflict } from "../../middlewares/errors";
 import { UserSchema } from "./validUserSchema/UserSchema";
 
 class CreateUserService{
     
-    async execute (user: UserInterface ) {
+    async execute (user: z.infer<typeof UserSchema> ) {
 
         const findUser = await prismaClient.user.findFirst({
             where: {

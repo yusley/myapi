@@ -3,9 +3,10 @@ import { ListUsersService } from "../../services/users/ListUsersService";
 
 
 class ListUsersController{
+    
     async handle (req:Request, res:Response) {
         const listUserService = new ListUsersService()
-        const users = listUserService.execute();
+        const users = await listUserService.execute();
         res.send(users);
     };
 };

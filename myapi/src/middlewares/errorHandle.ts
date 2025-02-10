@@ -13,6 +13,7 @@ export const errorHandle = (err: BaseError, req: Request, res: Response, next: N
             details: err.errors
         });
     }
+    
     if (err.status){
         res.status(err.status).send({
             success: false,
