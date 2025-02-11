@@ -7,7 +7,7 @@ class listTransactionsMoneyController{
         const ListTransactionsMoney = new listTransactionsMoneyService()
         
         const transactions = await ListTransactionsMoney.execute()
-
+        
         res.send(transactions)
     }
 }

@@ -4,7 +4,6 @@ import { ZodError } from "zod";
 
 
 export const errorHandle = (err: BaseError, req: Request, res: Response, next: NextFunction) => {
-    console.log("Erro capturado no middleware:", err);
 
     if (err instanceof ZodError) {
         res.status(400).send({

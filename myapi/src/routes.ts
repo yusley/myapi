@@ -2,6 +2,7 @@ import { Router,Request,Response, NextFunction} from "express";
 import { listTransactionsMoneyController } from "./controllers/transactions/ListTransactionsMoneyController";
 import { ListUsersController } from "./controllers/users/ListUsersControllers";
 import { CreateUserControler } from "./controllers/users/CreateUserController";
+import { CreateTransactionsMoneyController } from "./controllers/transactions/CreateTransactionsMoneyController";
 
 const route = Router();
 
@@ -21,5 +22,11 @@ route.post('/users', (req: Request, res: Response, next: NextFunction) => {
 route.get('/transactions', (req: Request, res: Response) => {
     return new listTransactionsMoneyController().handle(req,res)
 })
+
+
+route.post('/transactions', (req: Request, res: Response, next: NextFunction) => {
+    return new CreateTransactionsMoneyController().handle(req,res,next)
+})
+
 
 export default route;

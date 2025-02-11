@@ -5,10 +5,11 @@ import { UserSchema } from "../../services/users/validUserSchema/UserSchema";
 class CreateUserControler {
     async handle (req: Request, res: Response, next: NextFunction){
         try{
-            const usuario = UserSchema.parse(req.body)
-            const user = new CreateUserService()
+            const userBody = UserSchema.parse(req.body)
+
+            const userService = new CreateUserService()
             
-            const userExecute = await user.execute(usuario)
+            const userExecute = await userService.execute(userBody)
             
             res.status(201).send(userExecute)
         }catch(err){

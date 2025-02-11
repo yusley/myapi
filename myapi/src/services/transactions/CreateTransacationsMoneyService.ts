@@ -1,10 +1,10 @@
 import prismaClient from "../../prisma";
-import { TransactionsSchema } from "./validTransactionSchema/TransactionSchema";
+import { TransactionsMoneySchema } from "./validTransactionSchema/TransactionsMoneySchema";
 import { z } from 'zod'
-import { CategorySchema } from "../category/validCategorySchema/SchemaCategory";
 
-class CreateTransactionService{
-    async execute (transaction: z.infer<typeof TransactionsSchema>) {
+
+class CreateTransactionsMoneyService{
+    async execute (transaction: z.infer<typeof TransactionsMoneySchema>) {
 
         const transactionCreated = await prismaClient.transactionsMoney.create({
             data: {
@@ -20,4 +20,4 @@ class CreateTransactionService{
 }
 
 
-export {CreateTransactionService};
+export {CreateTransactionsMoneyService};
