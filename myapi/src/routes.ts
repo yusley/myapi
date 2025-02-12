@@ -3,6 +3,8 @@ import { listTransactionsMoneyController } from "./controllers/transactions/List
 import { ListUsersController } from "./controllers/users/ListUsersControllers";
 import { CreateUserControler } from "./controllers/users/CreateUserController";
 import { CreateTransactionsMoneyController } from "./controllers/transactions/CreateTransactionsMoneyController";
+import { ListCategoryController } from "./controllers/category/ListCategoryController";
+
 
 const route = Router();
 
@@ -26,6 +28,11 @@ route.get('/transactions', (req: Request, res: Response) => {
 
 route.post('/transactions', (req: Request, res: Response, next: NextFunction) => {
     return new CreateTransactionsMoneyController().handle(req,res,next)
+})
+
+
+route.get('/category', (req: Request, res: Response, next: NextFunction) => {
+    return new ListCategoryController().handle(req,res,next)
 })
 
 

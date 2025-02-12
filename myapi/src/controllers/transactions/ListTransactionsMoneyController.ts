@@ -4,9 +4,9 @@ import { listTransactionsMoneyService } from "../../services/transactions/ListTr
 
 class listTransactionsMoneyController{
     async handle (req: Request, res: Response) {
-        const ListTransactionsMoney = new listTransactionsMoneyService()
+        const listTransactionsMoney = new listTransactionsMoneyService()
         
-        const transactions = await ListTransactionsMoney.execute()
+        const transactions = await listTransactionsMoney.execute()
         
         res.send(transactions)
     }
