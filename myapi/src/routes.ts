@@ -5,6 +5,7 @@ import { CreateUserControler } from "./controllers/users/CreateUserController";
 import { CreateTransactionsMoneyController } from "./controllers/transactions/CreateTransactionsMoneyController";
 import { ListCategoryController } from "./controllers/category/ListCategoryController";
 import { CreateCategoryController } from "./controllers/category/CreateCategoryController";
+import { ListLoginUserController } from "./controllers/loginUser/ListLoginUserController";
 
 const route = Router();
 
@@ -12,16 +13,16 @@ route.get('/', (req: Request,res:Response) => {
     res.send({message:'Hello World with ts'})
 })
 
-route.get('/users', (req: Request, res: Response) => {
-    return new ListUsersController().handle(req,res)
+route.get('/users', (req: Request, res: Response , next: NextFunction) => {
+    return new ListUsersController().handle(req,res,next)
 })
 
 route.post('/users', (req: Request, res: Response, next: NextFunction) => {
     return new CreateUserControler().handle(req,res, next)
 })
 
-route.get('/transactions', (req: Request, res: Response) => {
-    return new listTransactionsMoneyController().handle(req,res)
+route.get('/transactions', (req: Request, res: Response, next: NextFunction) => {
+    return new listTransactionsMoneyController().handle(req,res,next)
 })
 
 route.post('/transactions', (req: Request, res: Response, next: NextFunction) => {
@@ -34,6 +35,14 @@ route.get('/category', (req: Request, res: Response, next: NextFunction) => {
 
 route.post('/category', (req: Request, res: Response, next: NextFunction) => {
     return new CreateCategoryController().handle(req,res,next)
+})
+
+route.get('/loginuser', (req: Request, res: Response, next: NextFunction) => {
+    return new ListLoginUserController().handle(req,res,next)
+})
+
+route.post('/loginuser', (req: Request, res: Response, next: NextFunction) => {
+    return new ListLoginUserController().handle(req,res,next)
 })
 
 export default route;

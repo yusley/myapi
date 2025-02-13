@@ -1,0 +1,26 @@
+import { BaseError } from "../../middlewares/errors";
+import prismaClient from "../../prisma";
+import { LoginUserSchema } from "./validLoginUserSchema/LoginUserSchema";
+import { z } from 'zod'
+class CreateLoginUserService {
+    async execute (loginUser: z.infer<typeof LoginUserSchema> ) {
+        const findLogin = await prismaClient.loginUser.findFirst({
+            where : {
+                username : loginUser.username
+            }
+        })
+        if(findLogin){
+            throw new BaseError("username já existe", 409)
+        }
+        const loginUserCreated = await prismaClient.loginUser.create({
+            data : {
+                username: loginUser.username,
+                password: loginUser.password,
+                userId : loginUser.userId
+            }
+        })
+        return loginUserCreated
+    }
+};
+
+export {CreateLoginUserService};
