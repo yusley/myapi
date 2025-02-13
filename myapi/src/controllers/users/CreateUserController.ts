@@ -12,7 +12,6 @@ class CreateUserControler {
         }catch(err){
             next(err)
         }
-        
     };
 };
 

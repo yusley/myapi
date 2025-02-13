@@ -4,7 +4,7 @@ import { ZodError } from "zod";
 
 
 export const errorHandle = (err: BaseError, req: Request, res: Response, next: NextFunction) => {
-    console.log('error handle', err)
+
     if (err instanceof ZodError) {
         res.status(400).send({
             success: false,

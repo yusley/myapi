@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { CategorySchema } from '../../category/validCategorySchema/SchemaCategory'
+import { CategorySchema } from '../../category/validCategorySchema/CategorySchema'
 
 export const TransactionsMoneySchema = z.object({
     title : z.string(),

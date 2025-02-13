@@ -21,6 +21,8 @@ model User {
   status Boolean
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
+
+  LoginUser LoginUser[]
 }
 
 model Category {
@@ -43,3 +45,12 @@ model TransactionsMoney {
 }
 
 
+model LoginUser {
+  id String @id @default(uuid())
+  username String
+  password String
+  userId String
+  user User @relation(fields: [userId], references: [id])
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+}

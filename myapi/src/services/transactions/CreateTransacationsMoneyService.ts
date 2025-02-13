@@ -5,7 +5,6 @@ import { z } from 'zod'
 
 class CreateTransactionsMoneyService{
     async execute (transaction: z.infer<typeof TransactionsMoneySchema>) {
-
         const transactionCreated = await prismaClient.transactionsMoney.create({
             data: {
                 title: transaction.title,
@@ -13,9 +12,7 @@ class CreateTransactionsMoneyService{
                 categoryId: transaction.categoryId
             }
         })
-
         return transactionCreated
-
     }
 }
 

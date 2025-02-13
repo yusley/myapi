@@ -4,16 +4,13 @@ import { Conflict } from "../../middlewares/errors";
 import { UserSchema } from "./validUserSchema/UserSchema";
 
 class CreateUserService{
-    
     async execute (user: z.infer<typeof UserSchema> ) {
-
         const findUser = await prismaClient.user.findFirst({
             where: {
                 cpf: user.cpf
             }
         })
         if (findUser){
-            
             throw new Conflict("Usuário já existe")
         }
         const userCreated = await prismaClient.user.create({
@@ -25,8 +22,6 @@ class CreateUserService{
             }
         })
         return userCreated
-        
-    
     }
 };
 
