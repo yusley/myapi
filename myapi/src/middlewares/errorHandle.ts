@@ -1,5 +1,5 @@
 import { Request,Response, NextFunction } from "express"
-import { BaseError } from "./errors"
+import { BaseError, Conflict } from "./errors"
 import { ZodError } from "zod";
 
 
@@ -15,6 +15,13 @@ export const errorHandle = (err: BaseError, req: Request, res: Response, next: N
     
     if (err instanceof BaseError){
         res.status(err.status).send({
+            success: false,
+            message: err.message,
+        })
+    }
+
+    if (err instanceof Conflict){
+        res.status(409).send({
             success: false,
             message: err.message,
         })
