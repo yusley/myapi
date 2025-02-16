@@ -1,10 +1,17 @@
 import prismaClient from "../../prisma";
-import { z } from 'zod'
-import { BaseError, Conflict } from "../../middlewares/errors";
+import { string, z } from 'zod'
+import { BaseError } from "../../middlewares/errors";
 import { UserSchema } from "./validUserSchema/UserSchema";
+import { PasswordEncryt } from "../../utils/passwordEncypt";
 
 class CreateUserService{
     async execute (user: z.infer<typeof UserSchema> ) {
+
+        const hashPassword = new PasswordEncryt()
+
+        const password = await hashPassword.generateHash(user.password as string)
+
+        console.log(password)
     
         const userCreated = await prismaClient.$transaction(async (tx) => {
             const findUser = await tx.user.findFirst({
@@ -31,7 +38,7 @@ class CreateUserService{
             const loginUserCreated = await tx.loginUser.create({
                 data : {
                     username: user.cpf,
-                    password: 'teste',
+                    password: 'password',
                     userId: userCreated.id
                 }
             })
@@ -39,7 +46,7 @@ class CreateUserService{
             return userCreated
     
         })
-        
+
         if(!userCreated){
             throw new BaseError("Erro ao criar usuário", 400)
         }
