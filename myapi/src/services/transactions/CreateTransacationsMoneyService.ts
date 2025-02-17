@@ -1,6 +1,7 @@
 import prismaClient from "../../prisma";
 import { TransactionsMoneySchema } from "./validTransactionSchema/TransactionsMoneySchema";
 import { z } from 'zod'
+import { UserSchema } from "../users/validUserSchema/UserSchema";
 
 
 class CreateTransactionsMoneyService{
@@ -9,7 +10,8 @@ class CreateTransactionsMoneyService{
             data: {
                 title: transaction.title,
                 price: transaction.price,
-                categoryId: transaction.categoryId
+                categoryId: transaction.categoryId,
+                userId: transaction.userId
             }
         })
         return transactionCreated

@@ -12,6 +12,9 @@ class PasswordEncryt{
 
             return hash
         })
+
+        
+
     }
 
     async compareHash (password: string, hash: string) {
