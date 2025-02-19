@@ -5,26 +5,21 @@ import { BaseError } from '../middlewares/errors'
 class PasswordEncryt{
 
     async generateHash (password: string) {
-        return bcrypt.hash(password,10,(err, hash) => {
-            if (err) {
-                throw new BaseError('Erro ao gerar hash senha', 400)
-            }
+   
+        const salt = await bcrypt.genSalt(10)
+        const hash = await bcrypt.hash(password, salt)
 
-            return hash
-        })
-
+        if(!hash){
+            throw new BaseError('erro ao gerar senha',400)
+        }
         
+        return hash
+    
 
     }
 
     async compareHash (password: string, hash: string) {
-        return bcrypt.compare(password,hash,(err, result) => {
-            if (err) {
-                throw new BaseError('Erro ao validar senha', 400)
-            }
-
-            return result
-        })
+        return await bcrypt.compare(password,hash)
     }
 
 }

@@ -6,13 +6,9 @@ import { PasswordEncryt } from "../../utils/passwordEncypt";
 
 class CreateUserService{
     async execute (user: z.infer<typeof UserSchema> ) {
-
         const hashPassword = new PasswordEncryt()
-
         const password = await hashPassword.generateHash(user.password as string)
-
-        console.log(password)
-    
+        
         const userCreated = await prismaClient.$transaction(async (tx) => {
             const findUser = await tx.user.findFirst({
                 where: {
@@ -30,7 +26,6 @@ class CreateUserService{
                     status: user.status
                 }
             })
-
             if(!userCreated){
                 throw new BaseError("Erro ao criar usuário", 400)
             }
@@ -38,19 +33,15 @@ class CreateUserService{
             const loginUserCreated = await tx.loginUser.create({
                 data : {
                     username: user.cpf,
-                    password: 'password',
+                    password: password,
                     userId: userCreated.id
                 }
             })
-
             return userCreated
-    
         })
-
         if(!userCreated){
             throw new BaseError("Erro ao criar usuário", 400)
         }
-
         return userCreated
             
         

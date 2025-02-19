@@ -6,11 +6,16 @@ import { CreateTransactionsMoneyController } from "./controllers/transactions/Cr
 import { ListCategoryController } from "./controllers/category/ListCategoryController";
 import { CreateCategoryController } from "./controllers/category/CreateCategoryController";
 import { ListLoginUserController } from "./controllers/loginUser/ListLoginUserController";
+import { LoginUserController } from "./controllers/loginUser/LoginUserController";
 
 const route = Router();
 
 route.get('/', (req: Request,res:Response) => {
     res.send({message:'Hello World with ts'})
+})
+
+route.post('/login', (req: Request, res: Response, next: NextFunction) => {
+    return new LoginUserController().handle(req,res,next)
 })
 
 route.get('/users', (req: Request, res: Response , next: NextFunction) => {
@@ -37,11 +42,11 @@ route.post('/category', (req: Request, res: Response, next: NextFunction) => {
     return new CreateCategoryController().handle(req,res,next)
 })
 
-route.get('/loginuser', (req: Request, res: Response, next: NextFunction) => {
+route.get('/listloginuser', (req: Request, res: Response, next: NextFunction) => {
     return new ListLoginUserController().handle(req,res,next)
 })
 
-route.post('/loginuser', (req: Request, res: Response, next: NextFunction) => {
+route.post('/createloginuser', (req: Request, res: Response, next: NextFunction) => {
     return new ListLoginUserController().handle(req,res,next)
 })
 

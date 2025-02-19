@@ -1,9 +1,9 @@
 import { BaseError } from "../../middlewares/errors";
 import prismaClient from "../../prisma";
-import { LoginUserSchema } from "./validLoginUserSchema/LoginUserSchema";
+import { LoginCreateUserSchema } from "./validLoginUserSchema/LoginUserSchema";
 import { z } from 'zod'
 class CreateLoginUserService {
-    async execute (loginUser: z.infer<typeof LoginUserSchema> ) {
+    async execute (loginUser: z.infer<typeof LoginCreateUserSchema> ) {
         const findLogin = await prismaClient.loginUser.findFirst({
             where : {
                 username : loginUser.username
