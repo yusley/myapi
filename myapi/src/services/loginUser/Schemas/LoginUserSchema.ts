@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import zodToJsonSchema from 'zod-to-json-schema'
 
 export const LoginCreateUserSchema = z.object({
     username : z.string(),
@@ -9,7 +10,9 @@ export const LoginCreateUserSchema = z.object({
 })
 
 
-export const LogisnUserSchema = z.object({
+export const LoginUserSchema = z.object({
     username : z.string(),
     password : z.string()
 })
+
+export const LoginUserJson = zodToJsonSchema(LoginUserSchema)

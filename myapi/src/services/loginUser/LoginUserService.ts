@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import prismaClient from "../../prisma";
-import { LogisnUserSchema } from "./Schemas/LoginUserSchema";
+import { LoginUserSchema } from "./Schemas/LoginUserSchema";
 import {z} from 'zod'
 import { BaseError } from "../../utils/errors";
 import { PasswordEncryt } from "../../utils/passwordEncypt";
@@ -9,7 +9,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 class LoginUserService {
-    async execute (user: z.infer<typeof LogisnUserSchema>) {
+    async execute (user: z.infer<typeof LoginUserSchema>) {
         const assign = process.env.ASSINGN_TOKEN
         if(!assign){
             throw new BaseError('configure uma assinatura!',400)

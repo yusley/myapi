@@ -15,6 +15,35 @@ route.get('/', (req: Request,res:Response) => {
     res.send({message:'Hello World with ts'})
 })
 
+
+/**
+ * @swagger
+ * /login:
+ *   post:
+ *     summary: Faz login na aplicação
+ *     description: Autentica um usuário com username e password.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/LoginUser'
+ *     responses:
+ *       200:
+ *         description: Login realizado com sucesso.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *                   example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+ *       400:
+ *         description: Dados inválidos fornecidos.
+ *       401:
+ *         description: Credenciais inválidas.
+ */
 route.post('/login', (req: Request, res: Response, next: NextFunction) => {
     return new LoginUserController().handle(req,res,next)
 })

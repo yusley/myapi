@@ -2,6 +2,7 @@ import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express'
 import {Express} from 'express'
 import { UserJsonSchema } from './services/users/Schemas/UserSchema';
+import { LoginUserJson } from './services/loginUser/Schemas/LoginUserSchema';
 
 
 const options: swaggerJsdoc.Options = {
@@ -20,7 +21,8 @@ const options: swaggerJsdoc.Options = {
         ],
         components: {
             schemas:{
-                    User: UserJsonSchema
+                    User: UserJsonSchema,
+                    LoginUser: LoginUserJson
             }
         },
         
