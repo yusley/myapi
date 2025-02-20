@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import zodToJsonSchema from 'zod-to-json-schema'
 
 export const UserSchema = z.object({
     name: z.string(),
@@ -10,3 +11,4 @@ export const UserSchema = z.object({
     updated_at: z.date().optional()
 })
 
+export const UserJsonSchema = zodToJsonSchema(UserSchema)

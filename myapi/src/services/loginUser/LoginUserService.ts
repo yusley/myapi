@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import prismaClient from "../../prisma";
-import { LogisnUserSchema } from "./validLoginUserSchema/LoginUserSchema";
+import { LogisnUserSchema } from "./Schemas/LoginUserSchema";
 import {z} from 'zod'
 import { BaseError } from "../../utils/errors";
 import { PasswordEncryt } from "../../utils/passwordEncypt";

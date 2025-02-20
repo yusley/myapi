@@ -1,7 +1,7 @@
 import prismaClient from "../../prisma";
 import { string, z } from 'zod'
 import { BaseError } from "../../utils/errors";
-import { UserSchema } from "./validUserSchema/UserSchema";
+import { UserSchema } from "./Schemas/UserSchema";
 import { PasswordEncryt } from "../../utils/passwordEncypt";
 
 class CreateUserService{

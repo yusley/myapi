@@ -2,16 +2,23 @@ import express from 'express'
 import route from './routes';
 import { json } from 'body-parser'
 import { errorHandle } from './middlewares/errorMiddleware';
+import { setupSwagger } from './swagger';
 
 const app = express();
 
+
+
 app.use(express.json());
+
+
 
 // middlewares
 app.use(json())
 
 // routes
 app.use(route)
+
+setupSwagger(app)
 
 // middleware de erro
 app.use(errorHandle)

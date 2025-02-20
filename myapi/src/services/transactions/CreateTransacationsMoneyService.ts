@@ -1,7 +1,7 @@
 import prismaClient from "../../prisma";
-import { TransactionsMoneySchema } from "./validTransactionSchema/TransactionsMoneySchema";
+import { TransactionsMoneySchema } from "./Schemas/TransactionsMoneySchema";
 import { z } from 'zod'
-import { UserSchema } from "../users/validUserSchema/UserSchema";
+import { UserSchema } from "../users/Schemas/UserSchema";
 
 
 class CreateTransactionsMoneyService{

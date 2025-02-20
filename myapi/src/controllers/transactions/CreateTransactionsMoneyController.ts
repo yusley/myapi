@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { TransactionsMoneySchema } from "../../services/transactions/validTransactionSchema/TransactionsMoneySchema";
+import { TransactionsMoneySchema } from "../../services/transactions/Schemas/TransactionsMoneySchema";
 import { CreateTransactionsMoneyService } from "../../services/transactions/CreateTransacationsMoneyService";
 
 class CreateTransactionsMoneyController {

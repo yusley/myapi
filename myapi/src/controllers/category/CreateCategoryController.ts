@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { CreateCategoryService } from "../../services/category/CreateCategoryService";
-import { CategorySchema } from "../../services/category/validCategorySchema/CategorySchema";
+import { CategorySchema } from "../../services/category/Schemas/CategorySchema";
 
 class CreateCategoryController {
     async handle (req: Request, res: Response, next: NextFunction) {

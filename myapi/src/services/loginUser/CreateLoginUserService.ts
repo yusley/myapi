@@ -1,6 +1,6 @@
 import { BaseError } from "../../utils/errors";
 import prismaClient from "../../prisma";
-import { LoginCreateUserSchema } from "./validLoginUserSchema/LoginUserSchema";
+import { LoginCreateUserSchema } from "./Schemas/LoginUserSchema";
 import { z } from 'zod'
 class CreateLoginUserService {
     async execute (loginUser: z.infer<typeof LoginCreateUserSchema> ) {

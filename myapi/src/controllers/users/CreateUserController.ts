@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { CreateUserService } from "../../services/users/CreateUserService";
 
-import { UserSchema } from "../../services/users/validUserSchema/UserSchema";
+import { UserSchema } from "../../services/users/Schemas/UserSchema";
 class CreateUserControler {
     async handle (req: Request, res: Response, next: NextFunction){
         try{

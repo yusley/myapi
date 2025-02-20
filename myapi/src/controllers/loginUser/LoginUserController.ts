@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { LoginUserService } from "../../services/loginUser/LoginUserService";
-import { LogisnUserSchema } from "../../services/loginUser/validLoginUserSchema/LoginUserSchema";
+import { LogisnUserSchema } from "../../services/loginUser/Schemas/LoginUserSchema";
 
 class LoginUserController {
     async handle (req: Request, res: Response, next: NextFunction) {

@@ -19,6 +19,22 @@ route.post('/login', (req: Request, res: Response, next: NextFunction) => {
     return new LoginUserController().handle(req,res,next)
 })
 
+/**
+ * @swagger
+ * /users:
+ *   get:
+ *     summary: Retorna uma lista de usuários
+ *     description: Retorna todos os usuários cadastrados.
+ *     responses:
+ *       200:
+ *         description: Lista de usuários retornada com sucesso.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/User'
+ */
 route.get('/users',AuthorizationMiddleware, (req: Request, res: Response , next: NextFunction) => {
     return new ListUsersController().handle(req,res,next)
 })

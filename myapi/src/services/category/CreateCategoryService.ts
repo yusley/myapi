@@ -1,5 +1,5 @@
 import prismaClient from "../../prisma";
-import { CategorySchema } from "./validCategorySchema/CategorySchema";
+import { CategorySchema } from "./Schemas/CategorySchema";
 import { z } from 'zod'
 import { BaseError } from "../../utils/errors";
 
