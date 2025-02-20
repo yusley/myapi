@@ -1,6 +1,6 @@
 import prismaClient from "../../prisma";
 import { string, z } from 'zod'
-import { BaseError } from "../../middlewares/errors";
+import { BaseError } from "../../utils/errors";
 import { UserSchema } from "./validUserSchema/UserSchema";
 import { PasswordEncryt } from "../../utils/passwordEncypt";
 

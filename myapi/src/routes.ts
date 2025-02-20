@@ -7,6 +7,7 @@ import { ListCategoryController } from "./controllers/category/ListCategoryContr
 import { CreateCategoryController } from "./controllers/category/CreateCategoryController";
 import { ListLoginUserController } from "./controllers/loginUser/ListLoginUserController";
 import { LoginUserController } from "./controllers/loginUser/LoginUserController";
+import { AuthorizationMiddleware } from "./middlewares/authMiddleware";
 
 const route = Router();
 
@@ -18,35 +19,35 @@ route.post('/login', (req: Request, res: Response, next: NextFunction) => {
     return new LoginUserController().handle(req,res,next)
 })
 
-route.get('/users', (req: Request, res: Response , next: NextFunction) => {
+route.get('/users',AuthorizationMiddleware, (req: Request, res: Response , next: NextFunction) => {
     return new ListUsersController().handle(req,res,next)
 })
 
-route.post('/users', (req: Request, res: Response, next: NextFunction) => {
+route.post('/users',AuthorizationMiddleware, (req: Request, res: Response, next: NextFunction) => {
     return new CreateUserControler().handle(req,res, next)
 })
 
-route.get('/transactions', (req: Request, res: Response, next: NextFunction) => {
+route.get('/transactions', AuthorizationMiddleware,(req: Request, res: Response, next: NextFunction) => {
     return new listTransactionsMoneyController().handle(req,res,next)
 })
 
-route.post('/transactions', (req: Request, res: Response, next: NextFunction) => {
+route.post('/transactions', AuthorizationMiddleware, (req: Request, res: Response, next: NextFunction) => {
     return new CreateTransactionsMoneyController().handle(req,res,next)
 })
 
-route.get('/category', (req: Request, res: Response, next: NextFunction) => {
+route.get('/category', AuthorizationMiddleware, (req: Request, res: Response, next: NextFunction) => {
     return new ListCategoryController().handle(req,res,next)
 })
 
-route.post('/category', (req: Request, res: Response, next: NextFunction) => {
+route.post('/category', AuthorizationMiddleware, (req: Request, res: Response, next: NextFunction) => {
     return new CreateCategoryController().handle(req,res,next)
 })
 
-route.get('/listloginuser', (req: Request, res: Response, next: NextFunction) => {
+route.get('/listloginuser', AuthorizationMiddleware, (req: Request, res: Response, next: NextFunction) => {
     return new ListLoginUserController().handle(req,res,next)
 })
 
-route.post('/createloginuser', (req: Request, res: Response, next: NextFunction) => {
+route.post('/createloginuser', AuthorizationMiddleware, (req: Request, res: Response, next: NextFunction) => {
     return new ListLoginUserController().handle(req,res,next)
 })
 

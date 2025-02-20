@@ -1,5 +1,3 @@
-import { Request, Response, NextFunction } from 'express';
-
 export class BaseError extends Error{
     status: number
     constructor(message: string, status: number) {

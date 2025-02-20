@@ -8,7 +8,6 @@ class CreateUserControler {
             const userBody = UserSchema.parse(req.body)
             const userService = new CreateUserService()
             const userExecute = await userService.execute(userBody)
-            console.log(userExecute)
             res.status(201).send(userExecute)
         }catch(err){
             next(err)

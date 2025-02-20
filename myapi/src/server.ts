@@ -1,7 +1,7 @@
 import express from 'express'
 import route from './routes';
 import { json } from 'body-parser'
-import { errorHandle } from './middlewares/errorHandle';
+import { errorHandle } from './middlewares/errorMiddleware';
 
 const app = express();
 

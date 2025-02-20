@@ -1,10 +1,11 @@
 import { Request,Response, NextFunction } from "express"
-import { BaseError, Conflict } from "./errors"
+import { BaseError, Conflict } from "../utils/errors"
 import { ZodError } from "zod";
+import { JsonWebTokenError } from "jsonwebtoken";
 
 
 export const errorHandle = (err: BaseError, req: Request, res: Response, next: NextFunction) => {
-    console.log(err)
+
     if (err instanceof ZodError) {
         res.status(400).send({
             success: false,
@@ -24,6 +25,14 @@ export const errorHandle = (err: BaseError, req: Request, res: Response, next: N
         res.status(409).send({
             success: false,
             message: err.message,
+        })
+    }
+
+    if (err instanceof JsonWebTokenError){
+        res.status(401).send({
+            success: false,
+            message: 'Format token invalide',
+            details: err.message
         })
     }
     

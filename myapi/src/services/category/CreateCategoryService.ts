@@ -1,7 +1,7 @@
 import prismaClient from "../../prisma";
 import { CategorySchema } from "./validCategorySchema/CategorySchema";
 import { z } from 'zod'
-import { BaseError } from "../../middlewares/errors";
+import { BaseError } from "../../utils/errors";
 
 class CreateCategoryService {
     async execute (category: z.infer<typeof CategorySchema>) {

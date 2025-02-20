@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs'
-import { BaseError } from '../middlewares/errors'
+import { BaseError } from './errors'
 
 
 class PasswordEncryt{

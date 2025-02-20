@@ -1,4 +1,4 @@
-import { BaseError } from "../../middlewares/errors";
+import { BaseError } from "../../utils/errors";
 import prismaClient from "../../prisma";
 import { LoginCreateUserSchema } from "./validLoginUserSchema/LoginUserSchema";
 import { z } from 'zod'
