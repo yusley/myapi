@@ -73,7 +73,7 @@ route.get('/users',AuthorizationMiddleware, (req: Request, res: Response , next:
  * /users:
  *   post:
  *     summary: Cria usuários
- *     description: cria usuários com os parâmetros fornecidos.
+ *     description: Cria usuários com os parâmetros fornecidos.
  *     requestBody:
  *       required: true
  *       content:
@@ -122,7 +122,7 @@ route.get('/transactions', AuthorizationMiddleware,(req: Request, res: Response,
  * /transactions:
  *   post:
  *     summary: Cria uma transação
- *     description: cria transações com os parâmetros fornecidos.
+ *     description: Cria transações com os parâmetros fornecidos.
  *     requestBody:
  *       required: true
  *       content:
@@ -171,7 +171,7 @@ route.get('/category', AuthorizationMiddleware, (req: Request, res: Response, ne
  * /category:
  *   post:
  *     summary: Cria uma Categoria
- *     description: cria uma categoria com os parâmetros fornecidos.
+ *     description: Cria uma categoria com os parâmetros fornecidos.
  *     requestBody:
  *       required: true
  *       content:
