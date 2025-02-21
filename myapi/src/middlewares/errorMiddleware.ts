@@ -31,7 +31,7 @@ export const errorHandle = (err: BaseError, req: Request, res: Response, next: N
     if (err instanceof JsonWebTokenError){
         res.status(401).send({
             success: false,
-            message: 'Format token invalide',
+            message: 'Format token invalid',
             details: err.message
         })
     }

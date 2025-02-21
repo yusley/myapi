@@ -2,7 +2,9 @@ import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express'
 import {Express} from 'express'
 import { UserJsonSchema } from './services/users/Schemas/UserSchema';
-import { LoginUserJson } from './services/loginUser/Schemas/LoginUserSchema';
+import { LoginUserJsonSchema } from './services/loginUser/Schemas/LoginUserSchema';
+import { CategoryJson } from './services/category/Schemas/CategorySchema';
+import { TransactionsMoneyJsonSchema } from './services/transactions/Schemas/TransactionsMoneySchema';
 
 
 const options: swaggerJsdoc.Options = {
@@ -22,7 +24,9 @@ const options: swaggerJsdoc.Options = {
         components: {
             schemas:{
                     User: UserJsonSchema,
-                    LoginUser: LoginUserJson
+                    LoginUser: LoginUserJsonSchema,
+                    Category: CategoryJson,
+                    TransactionMoney: TransactionsMoneyJsonSchema
             }
         },
         
@@ -37,7 +41,6 @@ const options: swaggerJsdoc.Options = {
 
 const specs = swaggerJsdoc(options);
 
-console.log('Swagger Specs:', JSON.stringify(specs, null, 2));
 export const setupSwagger = (app: Express) => {
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs))
 }

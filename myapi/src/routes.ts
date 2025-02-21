@@ -68,22 +68,129 @@ route.get('/users',AuthorizationMiddleware, (req: Request, res: Response , next:
     return new ListUsersController().handle(req,res,next)
 })
 
+/**
+ * @swagger
+ * /users:
+ *   post:
+ *     summary: Cria usuários
+ *     description: cria usuários com os parâmetros fornecidos.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/User'
+ *     responses:
+ *       200:
+ *         description: Login realizado com sucesso.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/User'
+ *                   
+ *       400:
+ *         description: Dados inválidos fornecidos.
+ *       401:
+ *         description: Credenciais inválidas.
+ * */
 route.post('/users',AuthorizationMiddleware, (req: Request, res: Response, next: NextFunction) => {
     return new CreateUserControler().handle(req,res, next)
 })
 
+/**
+ * @swagger
+ * /transactions:
+ *   get:
+ *     summary: Retorna uma lista de transações
+ *     description: Retorna todas as transações cadastrados.
+ *     responses:
+ *       200:
+ *         description: Lista de usuários retornada com sucesso.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/TransactionMoney'
+ */
 route.get('/transactions', AuthorizationMiddleware,(req: Request, res: Response, next: NextFunction) => {
     return new listTransactionsMoneyController().handle(req,res,next)
 })
 
+/**
+ * @swagger
+ * /transactions:
+ *   post:
+ *     summary: Cria uma transação
+ *     description: cria transações com os parâmetros fornecidos.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/TransactionMoney'
+ *     responses:
+ *       200:
+ *         description: Retorna a transação criada.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/TransactionMoney'
+ *                   
+ *       400:
+ *         description: Dados inválidos fornecidos.
+ *       401:
+ *         description: Credenciais inválidas.
+ * */
 route.post('/transactions', AuthorizationMiddleware, (req: Request, res: Response, next: NextFunction) => {
     return new CreateTransactionsMoneyController().handle(req,res,next)
 })
 
+/**
+ * @swagger
+ * /category:
+ *   get:
+ *     summary: Retorna uma lista de categorias
+ *     description: Retorna todas as categorias cadastradas.
+ *     responses:
+ *       200:
+ *         description: Lista de categorias retornada com sucesso.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Category'
+ */
 route.get('/category', AuthorizationMiddleware, (req: Request, res: Response, next: NextFunction) => {
     return new ListCategoryController().handle(req,res,next)
 })
 
+/**
+ * @swagger
+ * /category:
+ *   post:
+ *     summary: Cria uma Categoria
+ *     description: cria uma categoria com os parâmetros fornecidos.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Category'
+ *     responses:
+ *       200:
+ *         description: Retorna a categoria criada.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Category'
+ *                   
+ *       400:
+ *         description: Dados inválidos fornecidos.
+ *       401:
+ *         description: Credenciais inválidas.
+ * */
 route.post('/category', AuthorizationMiddleware, (req: Request, res: Response, next: NextFunction) => {
     return new CreateCategoryController().handle(req,res,next)
 })

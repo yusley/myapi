@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken'
 import { Request, Response, NextFunction } from 'express'
-import { BaseError } from '../utils/errors'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -29,17 +28,14 @@ export function AuthorizationMiddleware (req: Request, res: Response, next: Next
         }
 
         const token = parts[1]
-
         
-        const decode = jwt.verify(token,assign)
-
+        const verify = jwt.verify(token,assign)
+        
         next()
 
     }catch(err){
-        console.log(err)
         next(err)
     }
-    
     
 }
 

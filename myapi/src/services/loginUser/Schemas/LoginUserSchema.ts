@@ -15,4 +15,4 @@ export const LoginUserSchema = z.object({
     password : z.string()
 })
 
-export const LoginUserJson = zodToJsonSchema(LoginUserSchema)
+export const LoginUserJsonSchema = zodToJsonSchema(LoginUserSchema)

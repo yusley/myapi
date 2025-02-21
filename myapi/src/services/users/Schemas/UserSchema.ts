@@ -11,4 +11,14 @@ export const UserSchema = z.object({
     updated_at: z.date().optional()
 })
 
-export const UserJsonSchema = zodToJsonSchema(UserSchema)
+
+export const UserSchemaReturn = z.object({
+    name: z.string(),
+    cpf: z.string(),
+    email: z.string(),
+    status: z.boolean(),
+    created_at: z.date().optional(),
+    updated_at: z.date().optional()
+})
+
+export const UserJsonSchema = zodToJsonSchema(UserSchemaReturn)
