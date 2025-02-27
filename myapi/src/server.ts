@@ -3,6 +3,7 @@ import route from './routes';
 import { json } from 'body-parser'
 import { errorHandle } from './middlewares/errorMiddleware';
 import { setupSwagger } from './swagger';
+import cors from 'cors'
 
 const app = express();
 
@@ -10,7 +11,7 @@ const app = express();
 
 app.use(express.json());
 
-
+app.use(cors())
 
 // middlewares
 app.use(json())

@@ -39,6 +39,7 @@ model TransactionsMoney {
   id String @id @default(uuid())
   title String
   price String
+  type String
   categoryId String
   category Category @relation(fields: [categoryId], references: [id])
   userId String

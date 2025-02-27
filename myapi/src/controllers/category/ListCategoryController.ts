@@ -6,6 +6,7 @@ class ListCategoryController {
         try{
             const listCategoryService = new ListCategoryService()
             const listCategory = await listCategoryService.execute()
+            console.log(listCategory)
             res.status(200).send(listCategory)
         }catch(err){
             next(err)
