@@ -5,6 +5,7 @@ import { CreateTransactionsMoneyService } from "../../services/transactions/Crea
 class CreateTransactionsMoneyController {
     async handle (req: Request, res: Response, next: NextFunction) {
         try{
+            console.log(req.body)
             const transactionMoneyBody = TransactionsMoneySchema.parse(req.body)
             const transactionService = new CreateTransactionsMoneyService()
             const transactionCreated = await transactionService.execute(transactionMoneyBody)

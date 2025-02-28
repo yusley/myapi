@@ -1,8 +1,6 @@
 import prismaClient from "../../prisma";
 import { TransactionsMoneySchema } from "./Schemas/TransactionsMoneySchema";
 import { z } from 'zod'
-import { UserSchema } from "../users/Schemas/UserSchema";
-
 
 class CreateTransactionsMoneyService{
     async execute (transaction: z.infer<typeof TransactionsMoneySchema>) {
@@ -10,6 +8,7 @@ class CreateTransactionsMoneyService{
             data: {
                 title: transaction.title,
                 price: transaction.price,
+                type: transaction.type,
                 categoryId: transaction.categoryId,
                 userId: transaction.userId
             }

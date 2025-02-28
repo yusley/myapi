@@ -5,7 +5,7 @@ import { JsonWebTokenError } from "jsonwebtoken";
 
 
 export const errorHandle = (err: BaseError, req: Request, res: Response, next: NextFunction) => {
-
+    console.log(err)
     if (err instanceof ZodError) {
         res.status(400).send({
             success: false,
