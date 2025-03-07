@@ -1,7 +1,9 @@
 import { Request,Response, NextFunction } from "express"
 import { BaseError, Conflict } from "../utils/errors"
-import { ZodError } from "zod";
+import { number, ZodError } from "zod";
 import { JsonWebTokenError } from "jsonwebtoken";
+import { Prisma } from "@prisma/client";
+import prismaClient from "../prisma";
 
 
 export const errorHandle = (err: BaseError, req: Request, res: Response, next: NextFunction) => {
@@ -35,8 +37,17 @@ export const errorHandle = (err: BaseError, req: Request, res: Response, next: N
             details: err.message
         })
     }
+
+    if (err instanceof Prisma.PrismaClientKnownRequestError){
+        let code = parseInt(err.code as string)
+        res.status(401).send({
+            success: false,
+            message: 'Request error',
+            details: err.message
+        })
+    }
     
-    res.status(err.status).send({
+    res.send({
         success: false,
         message: err,
     });
