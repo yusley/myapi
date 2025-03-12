@@ -11,6 +11,7 @@ dotenv.config()
 class LoginUserService {
     async execute (user: z.infer<typeof LoginUserSchema>) {
         const assign = process.env.ASSINGN_TOKEN
+        console.log(assign)
         if(!assign){
             throw new BaseError('configure uma assinatura!',400)
         }
@@ -28,7 +29,7 @@ class LoginUserService {
             throw new BaseError('senha incorreta!',403)
         }
         
-        const token = jwt.sign({'userId':loginExists.id},assign,{expiresIn:'1h'})
+        const token = jwt.sign({'userId':loginExists.id,'permission': 'admin'},assign,{expiresIn:'1h'})
         
         return {'token':token}
     }

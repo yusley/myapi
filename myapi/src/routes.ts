@@ -8,6 +8,7 @@ import { CreateCategoryController } from "./controllers/category/CreateCategoryC
 import { ListLoginUserController } from "./controllers/loginUser/ListLoginUserController";
 import { LoginUserController } from "./controllers/loginUser/LoginUserController";
 import { AuthorizationMiddleware } from "./middlewares/authMiddleware";
+import { VerifyTokenController } from "./controllers/token/verifyTokenController";
 
 const route = Router();
 
@@ -193,6 +194,10 @@ route.get('/category', AuthorizationMiddleware, (req: Request, res: Response, ne
  * */
 route.post('/category', AuthorizationMiddleware, (req: Request, res: Response, next: NextFunction) => {
     return new CreateCategoryController().handle(req,res,next)
+})
+
+route.post('/verifytoken', (req: Request, res: Response, next: NextFunction) => {
+    return new VerifyTokenController().handle(req,res,next)
 })
 
 route.get('/listloginuser', AuthorizationMiddleware, (req: Request, res: Response, next: NextFunction) => {

@@ -1,9 +1,9 @@
 import { Request,Response, NextFunction } from "express"
 import { BaseError, Conflict } from "../utils/errors"
-import { number, ZodError } from "zod";
+import { ZodError } from "zod";
 import { JsonWebTokenError } from "jsonwebtoken";
 import { Prisma } from "@prisma/client";
-import prismaClient from "../prisma";
+
 
 
 export const errorHandle = (err: BaseError, req: Request, res: Response, next: NextFunction) => {
